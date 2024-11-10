@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <script>
+        document.addEventListener('keydown', function (event) {
+            if (event.key === 'Enter') {
+                event.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('keydown', function (event) {
+            if (event.ctrlKey && event.key === 'u') {
+                event.preventDefault();
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('contextmenu', function (e) {
+            e.preventDefault();
+        });
+
+        document.addEventListener('keydown', function (e) {
+            if (e.keyCode === 123) {
+                e.preventDefault();
+            }
+        });
+    </script>
+    <meta charset="UTF-8">
+    <title>纪念UKE！</title>
+    <link rel="icon" href="https://cdn.luogu.com.cn/upload/image_hosting/it2ueqmo.png" type="image/png">
+    <script>
+        var n = 0;
+        var m = 0;
+        var jia = 1000000;
+        var ne = 1;
+        function kk() {
+            alert("Error!");
+        }
+        function tishi() {
+            alert("如果看不到保存和加载按钮，请向下划哦。");
+        }
+        function zhaomu() {
+            if (m < 1) {
+                kk(); return;
+            }
+            m+=jia;
+            jia += jia;
+            document.getElementById("木鱼加成").innerHTML = "木鱼加成：" + jia;
+            document.getElementById("信仰显示").innerHTML = "信仰：" + m;
+        }
+        function auto1() {
+            while (m >= 1) changetogongde();
+        }
+        function auto2() {
+            while (n >= 50000) changetoxinyang();
+        }
+        function auto3() {
+            while (m >= 1)
+                zhaomu();
+        }
+        function changetogongde() {
+            if (m < 1) { kk(); return; }
+            m--;
+            n += 50000;
+            document.getElementById("功德显示").innerHTML = "功德：" + n;
+            document.getElementById("信仰显示").innerHTML = "信仰：" + m;
+        }
+        function changetoxinyang() {
+            if (n < 50000) { kk(); return; }
+            n -= 50000;
+            m++;
+            document.getElementById("功德显示").innerHTML = "功德：" + n;
+            document.getElementById("信仰显示").innerHTML = "信仰：" + m;
+        }
+        function muyu() {
+            n += jia;
+            document.getElementById("功德显示").innerHTML = "缺德：" + n;
+        }
+    </script>
+    <script>
+        function SAVE() {
+            localStorage.setItem("nn", n);
+            localStorage.setItem("mm", m);
+            localStorage.setItem("jiajia", jia);
+            localStorage.setItem("nene", 123);
+        }
+        function READ() {
+            n = localStorage.getItem("nn");
+            m = localStorage.getItem("mm");
+            jia = localStorage.getItem("jiajia");
+        }
+        function LAOD() {
+            READ();
+            n++;
+            n--;
+            m++;
+            m--;
+            jia++;
+            jia--;
+            if (jia == 0)
+                jia = 1;
+            document.getElementById("功德显示").innerHTML = "功德：" + n;
+            document.getElementById("信仰显示").innerHTML = "信仰：" + m;
+            document.getElementById("木鱼加成").innerHTML = "木鱼加成：" + jia;
+        }
+        function NE() {
+            ne = localStorage.getItem("nene");
+        }
+    </script>
+    <script>
+        var sum__ = 0;
+        function dutumuyu() {
+            var rand__ = Math.floor(Math.random() * (n * 2 + 1)) - n;
+            if (rand__ < 0) {
+                rand__ += sum__;
+            }
+            if (sum__ > 10000) {
+                rand__ = -n;
+                sum__ = 0;
+            }
+            else if (sum__ > 1000) {
+                rand__ = Math.floor(Math.random() * (0 - n + 1)) + n;
+                sum__ = 0;
+            }
+            n += rand__;
+            SAVE();
+            document.getElementById("功德显示").innerHTML = "功德：" + n;
+            if (rand__ > 0) {
+                sum__ += rand__;
+            } else {
+                sum__ = 0;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <script>NE(); if (ne != 123) tishi()</script>
+    <h1>纪念UKE！</h1>
+    <img src="https://cdn.luogu.com.cn/upload/image_hosting/it2ueqmo.png" alt="">
+    <br>
+    <p>↑（纪念UKE！）<strong>注：为了弘扬愿赌服输的精神，赌徒木鱼加了自动保存。</strong><br>因为一些贪心哥的行为，导致作者不得不在2024年10月6日重置所有存档，对此表示深深的歉意<br><a
+            href="https://www.luogu.com.cn/discuss/61884">说句闲话：研究珂学的最好方法是</a></p>
+    <br>
+    <p>敲木鱼来纪念UKE吧 <strong>作者洛谷名：LUO_Never_AC，未经允许，禁止转载。</strong><br><a
+            href="https://www.luogu.com.cn/team/75912">戳这里加入我们</a>
+        <a href="http://www.luogu.com.cn/chat?uid=772815">反馈建议</a>
+        <a href="https://www.luogu.com.cn/article/hpdind9f">攻略教程</a>
+    </p>
+    <br>
+    <button onclick="muyu()">木鱼（要慢慢按，不然加不了哦！）</button>
+    <button onclick="dutumuyu()">赌徒木鱼（小心哦！）</button>
+    <button onclick="zhaomu()">招募信徒（1信仰，升级普通木鱼）</button>
+    <button onclick="auto3()">自动招募信徒（会卡死哦！！！！！！！！！！！！！！！！！！！！！！！！！！！！！）</button>
+    <p id="功德显示">功德：0<br></p>
+    <p id="信仰显示">信仰：0</p>
+    <p id="木鱼加成">木鱼加成：1</p>
+    <button onclick="changetogongde()">1信仰->50000功德</button>
+    <button onclick="changetoxinyang()">50000功德->1信仰</button>
+    <button onclick="auto1()">自动兑换成功德</button>
+    <button onclick="auto2()">自动兑换成信仰</button>
+    <br>
+    <button onclick="SAVE()">保存游戏</button>
+    <button onclick="LAOD()">加载游戏</button>
+    <script>
+            (function () {
+                var a_idx = 0;
+                window.onclick = function (event) {
+                    var a = new Array("AFO!", "while(true){RP--;}", "god damn it UKE!");
+                    var heart = document.createElement("b");
+                    heart.onselectstart = new Function('event.returnValue=false');
+                    document.body.appendChild(heart).innerHTML = a[a_idx];
+                    a_idx = (a_idx + 1) % a.length;
+                    heart.style.cssText = "position: fixed;left:-100%;";
+                    var f = 16,
+                        x = event.clientX - f / 2,
+                        y = event.clientY - f,
+                        c = randomColor(),
+                        a = 1,
+                        s = 1.2;
+
+                    var timer = setInterval(function () {
+                        if (a <= 0) {
+                            document.body.removeChild(heart);
+                            clearInterval(timer);
+                        } else {
+                            heart.style.cssText = "font-size:16px;cursor: default;position: fixed;color:" +
+                                c + ";left:" + x + "px;top:" + y + "px;opacity:" + a + ";transform:scale(" +
+                                s + ");";
+
+                            y--;
+                            a -= 0.016;
+                            s += 0.002;
+                        }
+                    }, 15)
+
+                }
+                function randomColor() {
+
+                    return "rgb(" + (~~(Math.random() * 255)) + "," + (~~(Math.random() * 255)) + "," + (~~(Math
+                        .random() * 255)) + ")";
+
+                }
+            }());
+    </script>
+    <script>
+        !function () {
+            function n(n, e, t) {
+                return n.getAttribute(e) || t
+            }
+
+            function e(n) {
+                return document.getElementsByTagName(n)
+            }
+
+            function t() {
+                var t = e("script"), o = t.length, i = t[o - 1];
+                return { l: o, z: n(i, "zIndex", -1), o: n(i, "opacity", .5), c: n(i, "color", "0,0,0"), n: n(i, "count", 99) }
+            }
+
+            function o() {
+                a = m.width = window.innerWidth || document.documentElement.clientWidth || document.body.clientWidth, c = m.height = window.innerHeight || document.documentElement.clientHeight || document.body.clientHeight
+            }
+
+            function i() {
+                r.clearRect(0, 0, a, c);
+                var n, e, t, o, m, l;
+                s.forEach(function (i, x) {
+                    for (i.x += i.xa, i.y += i.ya, i.xa *= i.x > a || i.x < 0 ? -1 : 1, i.ya *= i.y > c || i.y < 0 ? -1 : 1, r.fillRect(i.x - .5, i.y - .5, 1, 1), e = x + 1; e < u.length; e++) n = u[e], null !== n.x && null !== n.y && (o = i.x - n.x, m = i.y - n.y, l = o * o + m * m, l < n.max && (n === y && l >= n.max / 2 && (i.x -= .03 * o, i.y -= .03 * m), t = (n.max - l) / n.max, r.beginPath(), r.lineWidth = t / 2, r.strokeStyle = "rgba(" + d.c + "," + (t + .2) + ")", r.moveTo(i.x, i.y), r.lineTo(n.x, n.y), r.stroke()))
+                }), x(i)
+            }
+
+            var a, c, u, m = document.createElement("canvas"), d = t(), l = "c_n" + d.l, r = m.getContext("2d"),
+                x = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || window.oRequestAnimationFrame || window.msRequestAnimationFrame || function (n) {
+                    window.setTimeout(n, 1e3 / 45)
+                }, w = Math.random, y = { x: null, y: null, max: 2e4 };
+            m.id = l, m.style.cssText = "position:fixed;top:0;left:0;z-index:" + d.z + ";opacity:" + d.o, e("body")[0].appendChild(m), o(), window.onresize = o, window.onmousemove = function (n) {
+                n = n || window.event, y.x = n.clientX, y.y = n.clientY
+            }, window.onmouseout = function () {
+                y.x = null, y.y = null
+            };
+            for (var s = [], f = 0; d.n > f; f++) {
+                var h = w() * a, g = w() * c, v = 2 * w() - 1, p = 2 * w() - 1;
+                s.push({ x: h, y: g, xa: v, ya: p, max: 6e3 })
+            }
+            u = s.concat([y]), setTimeout(function () {
+                i()
+            }, 100)
+        }();
+    </script>
+    <canvas></canvas>
+</body>
+
+</html>
