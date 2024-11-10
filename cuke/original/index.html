@@ -1,5 +1,4 @@
-<!DOCTYPE html>
-<html lang="zh">
+<html>
 
 <head>
     <script>
@@ -45,8 +44,8 @@
             if (m < 1) {
                 kk(); return;
             }
-            m+=jia;
-            jia += jia;
+            m--;
+            jia += 2;
             document.getElementById("木鱼加成").innerHTML = "木鱼加成：" + jia;
             document.getElementById("信仰显示").innerHTML = "信仰：" + m;
         }
@@ -153,7 +152,7 @@
     <button onclick="muyu()">木鱼（要慢慢按，不然加不了哦！）</button>
     <button onclick="dutumuyu()">赌徒木鱼（小心哦！）</button>
     <button onclick="zhaomu()">招募信徒（1信仰，升级普通木鱼）</button>
-    <button onclick="auto3()">自动招募信徒（会卡死哦！！！！！！！！！！！！！！！！！！！！！！！！！！！！！）</button>
+    <button onclick="auto3()">自动招募信徒</button>
     <p id="功德显示">功德：0<br></p>
     <p id="信仰显示">信仰：0</p>
     <p id="木鱼加成">木鱼加成：1</p>
